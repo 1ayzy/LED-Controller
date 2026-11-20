@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>1000</width><height>620</height></rect></property>
+  <property name="windowTitle"><string>LED Controller</string></property>
+  <property name="styleSheet">
+   <string notr="true">
+QMainWindow, QWidget#centralwidget, QWidget#contentWidget { background-color: #0F172A; }
+QWidget#titleBar { background-color: #0B1220; }
+QLabel { color: #E2E8F0; font-size: 13px; }
+QLabel#titleLabel { font-size: 15px; font-weight: bold; }
+QLabel#DeviceNameLabel { font-size: 22px; font-weight: bold; color: #F8FAFC; }
+QLabel#powerCaption, QLabel#sectionLabel { font-size: 14px; font-weight: bold; }
+QLabel#StatusLabel { color: #CBD5E1; background-color: #1E293B; border-radius: 8px; padding: 10px; }
+QPushButton { background-color: #1E293B; color: #F8FAFC; border: none; border-radius: 8px; padding: 10px 14px; font-size: 14px; }
+QPushButton:hover { background-color: #334155; }
+QPushButton:pressed { background-color: #475569; }
+QPushButton#InfoButton { border-radius: 17px; font-size: 17px; font-weight: bold; padding: 0px; background-color: #1E293B; color: #93C5FD; }
+QPushButton#InfoButton:hover { background-color: #3B82F6; color: #FFFFFF; }
+QPushButton#ApplyColorButton { background-color: #3B82F6; color: #06152E; font-weight: bold; }
+QPushButton#ApplyColorButton:hover { background-color: #2563EB; }
+QPushButton#close_btn, QPushButton#minimize_btn { background-color: transparent; padding: 6px 12px; font-size: 15px; }
+QPushButton#close_btn:hover { background-color: #EF4444; }
+QSlider::groove:horizontal { height: 8px; background: #334155; border-radius: 4px; }
+QSlider::sub-page:horizontal { background: #475569; border-radius: 4px; }
+QSlider::handle:horizontal { background: #E2E8F0; width: 16px; margin: -5px 0; border-radius: 8px; }
+QSlider#RSlider::handle:horizontal { background: #EF4444; }
+QSlider#GSlider::handle:horizontal { background: #10B981; }
+QSlider#BSlider::handle:horizontal { background: #3B82F6; }
+QListWidget { background-color: #111C31; color: #E2E8F0; border: 1px solid #334155; border-radius: 8px; padding: 4px; font-size: 14px; }
+QListWidget::item { padding: 8px; border-radius: 6px; }
+QListWidget::item:selected { background-color: #3B82F6; color: #FFFFFF; }
+QLineEdit { background-color: #1E293B; color: #F8FAFC; border: 1px solid #334155; border-radius: 8px; padding: 8px 10px; }
+   </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="mainLayout" stretch="0,1">
+    <property name="spacing"><number>0</number></property>
+    <property name="leftMargin"><number>0</number></property>
+    <property name="topMargin"><number>0</number></property>
+    <property name="rightMargin"><number>0</number></property>
+    <property name="bottomMargin"><number>0</number></property>
+    <item>
+     <widget class="QWidget" name="titleBar" native="true">
+      <property name="minimumSize"><size><width>0</width><height>44</height></size></property>
+      <property name="maximumSize"><size><width>16777215</width><height>44</height></size></property>
+      <layout class="QHBoxLayout" name="titleBarLayout" stretch="1,0,0">
+       <property name="leftMargin"><number>14</number></property>
+       <property name="topMargin"><number>0</number></property>
+       <property name="rightMargin"><number>6</number></property>
+       <property name="bottomMargin"><number>0</number></property>
+       <item><widget class="QLabel" name="titleLabel"><property name="text"><string>LED Controller</string></property></widget></item>
+       <item><widget class="QPushButton" name="minimize_btn"><property name="text"><string>—</string></property></widget></item>
+       <item><widget class="QPushButton" name="close_btn"><property name="text"><string>✕</string></property></widget></item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="contentWidget" native="true">
+      <layout class="QHBoxLayout" name="contentLayout" stretch="0,1,0">
+       <property name="spacing"><number>18</number></property>
+       <property name="leftMargin"><number>18</number></property>
+       <property name="topMargin"><number>18</number></property>
+       <property name="rightMargin"><number>18</number></property>
+       <property name="bottomMargin"><number>18</number></property>
+       <item>
+        <widget class="QWidget" name="leftPanel" native="true">
+         <property name="minimumSize"><size><width>260</width><height>0</height></size></property>
+         <property name="maximumSize"><size><width>260</width><height>16777215</height></size></property>
+         <layout class="QVBoxLayout" name="leftLayout" stretch="0,0,0,0,0,0,1">
+          <property name="spacing"><number>12</number></property>
+          <property name="leftMargin"><number>0</number></property>
+          <property name="topMargin"><number>0</number></property>
+          <property name="rightMargin"><number>0</number></property>
+          <property name="bottomMargin"><number>0</number></property>
+          <item>
+           <widget class="QLabel" name="DeviceNameLabel">
+            <property name="text"><string>Не выбрано</string></property>
+            <property name="wordWrap"><bool>true</bool></property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignLeft">
+           <widget class="QPushButton" name="InfoButton">
+            <property name="minimumSize"><size><width>34</width><height>34</height></size></property>
+            <property name="maximumSize"><size><width>34</width><height>34</height></size></property>
+            <property name="toolTip"><string>Информация об устройстве</string></property>
+            <property name="text"><string>i</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="SavedDevicesButton">
+            <property name="text"><string>Сохранённые устройства</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="SearchDevicesButton">
+            <property name="text"><string>Поиск устройств</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="powerCaption"><property name="text"><string>Питание ленты</string></property></widget>
+          </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="ToggleSwitch" name="PowerToggle">
+            <property name="minimumSize"><size><width>124</width><height>56</height></size></property>
+            <property name="maximumSize"><size><width>124</width><height>56</height></size></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="StatusLabel">
+            <property name="text"><string>Статус</string></property>
+            <property name="wordWrap"><bool>true</bool></property>
+            <property name="alignment"><set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set></property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="centerPanel" native="true">
+         <layout class="QVBoxLayout" name="centerLayout" stretch="1,0,0,0,0">
+          <property name="spacing"><number>14</number></property>
+          <property name="leftMargin"><number>0</number></property>
+          <property name="topMargin"><number>0</number></property>
+          <property name="rightMargin"><number>0</number></property>
+          <property name="bottomMargin"><number>0</number></property>
+          <item>
+           <widget class="QFrame" name="ColorPreview">
+            <property name="minimumSize"><size><width>0</width><height>150</height></size></property>
+            <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="rowR" stretch="0,1,0">
+            <property name="spacing"><number>10</number></property>
+            <item><widget class="QLabel" name="labelR"><property name="text"><string>R</string></property><property name="minimumSize"><size><width>16</width><height>0</height></size></property><property name="maximumSize"><size><width>16</width><height>16777215</height></size></property></widget></item>
+            <item><widget class="QSlider" name="RSlider"><property name="maximum"><number>255</number></property><property name="value"><number>255</number></property><property name="orientation"><enum>Qt::Horizontal</enum></property></widget></item>
+            <item><widget class="QLabel" name="RValue"><property name="text"><string>255</string></property><property name="minimumSize"><size><width>36</width><height>0</height></size></property><property name="maximumSize"><size><width>36</width><height>16777215</height></size></property><property name="alignment"><set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set></property></widget></item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="rowG" stretch="0,1,0">
+            <property name="spacing"><number>10</number></property>
+            <item><widget class="QLabel" name="labelG"><property name="text"><string>G</string></property><property name="minimumSize"><size><width>16</width><height>0</height></size></property><property name="maximumSize"><size><width>16</width><height>16777215</height></size></property></widget></item>
+            <item><widget class="QSlider" name="GSlider"><property name="maximum"><number>255</number></property><property name="value"><number>255</number></property><property name="orientation"><enum>Qt::Horizontal</enum></property></widget></item>
+            <item><widget class="QLabel" name="GValue"><property name="text"><string>255</string></property><property name="minimumSize"><size><width>36</width><height>0</height></size></property><property name="maximumSize"><size><width>36</width><height>16777215</height></size></property><property name="alignment"><set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set></property></widget></item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="rowB" stretch="0,1,0">
+            <property name="spacing"><number>10</number></property>
+            <item><widget class="QLabel" name="labelB"><property name="text"><string>B</string></property><property name="minimumSize"><size><width>16</width><height>0</height></size></property><property name="maximumSize"><size><width>16</width><height>16777215</height></size></property></widget></item>
+            <item><widget class="QSlider" name="BSlider"><property name="maximum"><number>255</number></property><property name="value"><number>255</number></property><property name="orientation"><enum>Qt::Horizontal</enum></property></widget></item>
+            <item><widget class="QLabel" name="BValue"><property name="text"><string>255</string></property><property name="minimumSize"><size><width>36</width><height>0</height></size></property><property name="maximumSize"><size><width>36</width><height>16777215</height></size></property><property name="alignment"><set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set></property></widget></item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QPushButton" name="ApplyColorButton">
+            <property name="text"><string>Применить цвет</string></property>
+            <property name="minimumSize"><size><width>0</width><height>46</height></size></property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="rightPanel" native="true">
+         <property name="minimumSize"><size><width>270</width><height>0</height></size></property>
+         <property name="maximumSize"><size><width>270</width><height>16777215</height></size></property>
+         <layout class="QVBoxLayout" name="rightLayout" stretch="0,1,0,0">
+          <property name="spacing"><number>10</number></property>
+          <property name="leftMargin"><number>0</number></property>
+          <property name="topMargin"><number>0</number></property>
+          <property name="rightMargin"><number>0</number></property>
+          <property name="bottomMargin"><number>0</number></property>
+          <item><widget class="QLabel" name="sectionLabel"><property name="text"><string>Пресеты</string></property></widget></item>
+          <item><widget class="QListWidget" name="PresetsList"><property name="iconSize"><size><width>22</width><height>22</height></size></property></widget></item>
+          <item><widget class="QLineEdit" name="PresetNameEdit"><property name="placeholderText"><string>Имя нового пресета</string></property></widget></item>
+          <item>
+           <layout class="QHBoxLayout" name="presetBtnsRow" stretch="1,1">
+            <property name="spacing"><number>8</number></property>
+            <item><widget class="QPushButton" name="SavePresetButton"><property name="text"><string>Сохранить</string></property></widget></item>
+            <item><widget class="QPushButton" name="RemovePresetButton"><property name="text"><string>Удалить</string></property></widget></item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ToggleSwitch</class>
+   <extends>QWidget</extends>
+   <header>_internal.ToggleSwitch</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

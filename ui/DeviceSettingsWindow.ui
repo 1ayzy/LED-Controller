@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DeviceSettingsWindow</class>
+ <widget class="QDialog" name="DeviceSettingsWindow">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>540</width><height>560</height></rect></property>
+  <property name="windowTitle"><string>Настройки устройства</string></property>
+  <property name="styleSheet">
+   <string notr="true">
+QDialog, QWidget#contentWidget { background-color: #0F172A; }
+QWidget#titleBar { background-color: #0B1220; }
+QLabel { color: #E2E8F0; font-size: 13px; }
+QLabel#titleLabel { font-size: 15px; font-weight: bold; }
+QLabel#TitleName { font-size: 18px; font-weight: bold; color: #F8FAFC; }
+QLabel#StatusLabel { color: #93C5FD; background-color: #1E293B; border-radius: 6px; padding: 8px; }
+QPushButton { background-color: #1E293B; color: #F8FAFC; border: none; border-radius: 8px; padding: 10px 14px; font-size: 13px; }
+QPushButton:hover { background-color: #334155; }
+QPushButton#DeleteButton { background-color: #7F1D1D; color: #FEE2E2; font-weight: bold; }
+QPushButton#DeleteButton:hover { background-color: #991B1B; }
+QPushButton#close_btn { background-color: transparent; padding: 6px 12px; font-size: 15px; }
+QPushButton#close_btn:hover { background-color: #EF4444; }
+QLineEdit, QSpinBox { background-color: #1E293B; color: #F8FAFC; border: 1px solid #334155; border-radius: 8px; padding: 8px 10px; }
+QCheckBox { color: #E2E8F0; spacing: 8px; font-size: 13px; }
+QGroupBox { color: #94A3B8; border: 1px solid #334155; border-radius: 8px; margin-top: 14px; padding-top: 16px; }
+QGroupBox::title { subcontrol-origin: margin; left: 12px; padding: 0 6px; }
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout" stretch="0,1">
+   <property name="spacing"><number>0</number></property>
+   <property name="leftMargin"><number>0</number></property>
+   <property name="topMargin"><number>0</number></property>
+   <property name="rightMargin"><number>0</number></property>
+   <property name="bottomMargin"><number>0</number></property>
+   <item>
+    <widget class="QWidget" name="titleBar" native="true">
+     <property name="minimumSize"><size><width>0</width><height>44</height></size></property>
+     <property name="maximumSize"><size><width>16777215</width><height>44</height></size></property>
+     <layout class="QHBoxLayout" name="titleBarLayout" stretch="1,0">
+      <property name="leftMargin"><number>14</number></property>
+      <property name="topMargin"><number>0</number></property>
+      <property name="rightMargin"><number>6</number></property>
+      <property name="bottomMargin"><number>0</number></property>
+      <item><widget class="QLabel" name="titleLabel"><property name="text"><string>Настройки устройства</string></property></widget></item>
+      <item><widget class="QPushButton" name="close_btn"><property name="text"><string>✕</string></property></widget></item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="contentWidget" native="true">
+     <layout class="QVBoxLayout" name="contentLayout" stretch="0,0,0,1,0,0">
+      <property name="spacing"><number>12</number></property>
+      <property name="leftMargin"><number>18</number></property>
+      <property name="topMargin"><number>16</number></property>
+      <property name="rightMargin"><number>18</number></property>
+      <property name="bottomMargin"><number>18</number></property>
+      <item><widget class="QLabel" name="TitleName"><property name="text"><string>Устройство</string></property><property name="wordWrap"><bool>true</bool></property></widget></item>
+      <item><widget class="QLabel" name="StatusLabel"><property name="text"><string>Изменения сохраняются автоматически</string></property><property name="wordWrap"><bool>true</bool></property></widget></item>
+      <item>
+       <widget class="QGroupBox" name="identityGroup">
+        <property name="title"><string>Имя и адреса</string></property>
+        <layout class="QFormLayout" name="identityForm">
+         <property name="horizontalSpacing"><number>14</number></property>
+         <property name="verticalSpacing"><number>10</number></property>
+         <item row="0" column="0"><widget class="QLabel" name="capName"><property name="text"><string>Имя</string></property></widget></item>
+         <item row="0" column="1"><widget class="QLineEdit" name="NameEdit"><property name="placeholderText"><string>Например: Лента в спальне</string></property></widget></item>
+         <item row="1" column="0"><widget class="QLabel" name="capMac"><property name="text"><string>MAC</string></property></widget></item>
+         <item row="1" column="1"><widget class="QLineEdit" name="MacEdit"><property name="readOnly"><bool>true</bool></property><property name="placeholderText"><string>BE:27:D2:00:0C:D9</string></property></widget></item>
+         <item row="2" column="0"><widget class="QLabel" name="capUuid"><property name="text"><string>UUID</string></property></widget></item>
+         <item row="2" column="1"><widget class="QLineEdit" name="UuidEdit"><property name="readOnly"><bool>true</bool></property><property name="placeholderText"><string>A696D3A4-B979-44FA-6313-E4F6EAF2289E</string></property></widget></item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="behaviorGroup">
+        <property name="title"><string>Поведение этой ленты</string></property>
+        <layout class="QVBoxLayout" name="behaviorLayout" stretch="0,0,0">
+         <property name="spacing"><number>8</number></property>
+         <item><widget class="QCheckBox" name="AutoOnStartChk"><property name="text"><string>Включать при запуске и подключении</string></property></widget></item>
+         <item><widget class="QCheckBox" name="AutoOffExitChk"><property name="text"><string>Выключать при закрытии приложения</string></property></widget></item>
+         <item>
+          <layout class="QHBoxLayout" name="reconnectRow" stretch="1,0">
+           <item><widget class="QLabel" name="reconnectLabel"><property name="text"><string>Интервал переподключения, сек</string></property></widget></item>
+            <item>
+             <widget class="QLineEdit" name="ReconnectSpin">
+              <property name="text"><string>5</string></property>
+              <property name="placeholderText"><string>5</string></property>
+              <property name="alignment"><set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set></property>
+              <property name="minimumSize"><size><width>80</width><height>34</height></size></property>
+              <property name="maximumSize"><size><width>80</width><height>34</height></size></property>
+             </widget>
+            </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="bottomRow" stretch="1,1">
+        <property name="spacing"><number>10</number></property>
+        <item><widget class="QPushButton" name="DeleteButton"><property name="text"><string>Удалить из сохранённых</string></property></widget></item>
+        <item><widget class="QPushButton" name="CloseButton"><property name="text"><string>Закрыть</string></property></widget></item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
