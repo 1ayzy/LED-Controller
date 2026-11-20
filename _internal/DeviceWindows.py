@@ -59,7 +59,7 @@ class DeviceInfoWindow(WindowDragMixin, QDialog):
         self.refresh()
 
     @debugger
-    def refresh(self):
+    def refresh(self, _ = None):
         device = self.main_window.device or {}
         strip = self.main_window.strip
         self.NameValue.setText(display_name(device) if device else "—")
